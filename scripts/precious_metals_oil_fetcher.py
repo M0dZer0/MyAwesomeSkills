@@ -7,7 +7,6 @@
 """
 
 import argparse
-import json
 import sys
 import time
 from datetime import datetime
@@ -374,11 +373,6 @@ def main():
     parser.add_argument("--commodity", type=str,
                         choices=["gold", "silver", "copper", "platinum", "oil"],
                         help="单品种查询时指定品种")
-    parser.add_argument("--format", type=str, default="text",
-                        choices=["text", "json"],
-                        help="输出格式: text=文本简报, json=JSON数据 (默认: text)")
-    parser.add_argument("--output", type=str, help="输出文件路径")
-
     args = parser.parse_args()
 
     if args.mode == "single":
@@ -390,19 +384,12 @@ def main():
         result = fetch_all_commodities()
 
     # 输出
-    if args.format == "json":
-        output = json.dumps(result, ensure_ascii=False, indent=2, default=str)
-    elif args.mode == "briefing":
+    if args.mode == "briefing":
         output = format_briefing(result)
     else:
         output = format_single(result)
 
-    if args.output:
-        with open(args.output, 'w', encoding='utf-8') as f:
-            f.write(output)
-        print(f"\n数据已保存到: {args.output}", file=sys.stderr)
-    else:
-        print(output)
+    print(output)
 
 
 if __name__ == "__main__":

@@ -60,8 +60,6 @@ python scripts/precious_metals_oil_fetcher.py --mode briefing
 
 **参数说明：**
 - `--mode`: 运行模式，`briefing` 为简报模式（获取所有品种）
-- `--format`: 输出格式，`text`（默认）为文本简报，`json` 为JSON数据
-- `--output`: 输出文件路径（可选，不指定则输出到stdout）
 
 ### Step 2: Present Briefing Report
 
@@ -110,40 +108,6 @@ python scripts/precious_metals_oil_fetcher.py --mode single --commodity gold
 以单品种详情方式展示，包含当前价格、涨跌幅、日内高低点等。
 
 ---
-
-## Output Format
-
-脚本默认以文本方式输出简报，可直接展示给用户。
-如需JSON格式（用于程序处理），可添加 `--format json` 参数。
-
-### JSON输出格式（--format json）
-
-```json
-{
-  "fetch_time": "2025-01-25T15:30:00",
-  "commodities": [
-    {
-      "name": "伦敦金",
-      "name_en": "London Gold (XAU)",
-      "symbol": "gold",
-      "latest_price": 2758.30,
-      "change": 23.20,
-      "change_pct": 0.85,
-      "open": 2735.10,
-      "high": 2762.50,
-      "low": 2730.00,
-      "prev_close": 2735.10,
-      "unit": "美元/盎司",
-      "status": "up"
-    }
-  ],
-  "summary": {
-    "up_count": 3,
-    "down_count": 2,
-    "market_sentiment": "偏多"
-  }
-}
-```
 
 ---
 
