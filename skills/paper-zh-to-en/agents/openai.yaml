@@ -1,0 +1,4 @@
+interface:
+  display_name: "论文中译英"
+  short_description: "将中文论文翻译为期刊风格英文并尽量保留格式"
+  default_prompt: "使用 $paper-zh-to-en 将这篇中文论文翻译为符合国际期刊风格的英文，并尽量保留原格式。"
